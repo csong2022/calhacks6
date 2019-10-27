@@ -28,3 +28,17 @@ def detect_image_profanity(file):
         return True
     else:
         return False
+
+
+def identify_profane_text(word_list):
+    profane_text = []
+    if detect_text_profanity(word_list):
+        for word in word_list:
+            if predict([word]):
+                profane_text.append(word)
+    return profane_text
+
+
+def words_to_censor(text):
+    words = text.split()
+    return identify_profane_text(words)
