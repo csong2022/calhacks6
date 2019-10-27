@@ -18,9 +18,8 @@ X = vectorizer.fit_transform(texts)
 cv = KFold(10)
 model = LinearSVC(class_weight="balanced", dual=False, tol=1e-2, max_iter=1e5)
 cclf = CalibratedClassifierCV(base_estimator=model, cv=cv)
-cclf = CalibratedClassifierCV(base_estimator=model)
 cclf.fit(X, y)
 
 # Save the model
-joblib.dump(vectorizer, 'resources/vectorizer2.joblib')
-joblib.dump(cclf, 'resources/model2.joblib')
+joblib.dump(vectorizer, 'resources/vectorizer.joblib')
+joblib.dump(cclf, 'resources/model.joblib')
